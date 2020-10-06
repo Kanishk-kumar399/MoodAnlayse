@@ -34,12 +34,11 @@ public class MoodAnalyserTest
     {
         MoodAnalyser moodAnalyser=new MoodAnalyser(null);
         try {
-        	ExpectedException ex=ExpectedException.none();
         	moodAnalyser.analyseMood();
     	}
     catch(MoodAnalysisException e)
         {
-    	e.printStackTrace();
+    	Assert.assertEquals(MoodAnalysisException.ExceptionType.Entered_NULL,e.type);
         }
     }
 }

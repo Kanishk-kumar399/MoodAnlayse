@@ -1,4 +1,7 @@
 package com.MoodAnalyser.MoodAnalyser;
+
+import com.MoodAnalyser.MoodAnalyser.MoodAnalysisException.ExceptionType;
+
 public class MoodAnalyser 
 {
 	private String message;
@@ -7,14 +10,17 @@ public class MoodAnalyser
 		super();
 		this.message = message;
 	}
-	public MoodAnalyser()
+	public String analyseMood(String message) throws MoodAnalysisException
     {
-    	super();
+    	this.message=message;
+    	return analyseMood();
     }
 	public String analyseMood() throws MoodAnalysisException
     {
     try {
-    	   if(message.contains("sad")) 
+    	   if(message.length()==0)
+    		   throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.Entered_EMPTY,"Please Enter a proper message");
+    	   else if(message.contains("sad")) 
     	   {
     		   return "SAD";
     	   }
@@ -25,7 +31,7 @@ public class MoodAnalyser
          }
     catch(NullPointerException e)
      {
-    	throw new MoodAnalysisException("Please Enter a proper message");
+    	throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.Entered_NULL,"Please Enter a proper message");
      }
     }
 }

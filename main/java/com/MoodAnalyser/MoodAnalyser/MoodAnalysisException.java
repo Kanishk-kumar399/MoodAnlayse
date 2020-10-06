@@ -2,10 +2,12 @@ package com.MoodAnalyser.MoodAnalyser;
 
 public class MoodAnalysisException extends Exception 
 {
-		public MoodAnalysisException(String message) {
+	enum ExceptionType{
+		Entered_EMPTY,Entered_NULL
+	}
+	ExceptionType type;
+		public MoodAnalysisException(ExceptionType type, String message) {
 			super(message);
-		}
-		class Exception extends Throwable{
-			
+			this.type=type;
 		}
 }
